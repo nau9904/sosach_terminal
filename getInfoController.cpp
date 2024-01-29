@@ -32,16 +32,40 @@ string getCustomer(short cust){
 	return Customer;
 }
 
-string getProductName(){
-	return CHAU_TRON_70;
+string getProductName(short n){
+	std::string name;
+	switch (n)
+	{
+	case 1:
+		name = CHAU_TRON_50;
+		break;
+	case 2:
+		name = CHAU_TRON_60;
+		break;
+	case 3:
+		name = CHAU_TRON_70;
+		break;
+	case 4:
+		name = CHAU_TRON_80;
+		break;
+	case 5:
+		name = CHAU_TRON_90;
+		break;
+	case 6:
+		name = CHAU_TRON_100;
+		break;
+	default:
+		break;
+	}
+	return name;
 }
 
 // get quantity
-int getQuantity(){
+// int getQuantity(){
 	// do something
-}
+// }
 
 // Caculation
-int caculation(){
-// do something
-}
+// int caculation(){
+// // do something
+// }

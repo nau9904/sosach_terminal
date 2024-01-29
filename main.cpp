@@ -1,23 +1,48 @@
 #include <iostream>
-#include <vector>
+
 #include "getInfoController.h"
+#include "ChauPriceController.h"
+#include "ShowList.h"
 
+class Bill {
+	private:
+		std::string custName;
+		std::string productName;
+		short quantity;
+		unsigned totalPrice;
+	public:
+		Bill(std::string cn, std::string pn, short q, unsigned ttp): 
+			custName(cn),
+			productName(pn),
+			quantity(q),
+			totalPrice(ttp) {}
 
-void showListProduct();
-void showListCustomer();
+	void makeBill(){
+		std::string bill;
+		bill = "   Khách hàng: " + custName + "\n" 
+				+ "   Loại chậu: " + productName + "\n" 
+				+ "   Số lượng: " + to_string(quantity) + "\n" 
+				+ "   Tổng giá: " + to_string(totalPrice) + "\n";
+		std::cout << bill;
+	}
+};
+
 int main(int argc, char const *argv[])
 {
+	bool flag;
 	short typeOfProduct;
 	short Customer;
-	std::string productName = getProductName();
+	short nameOfProduct;
+	
 
-	std::cout << "====================================================" << std::endl;
-	std::cout << "=====================Xin Chào=======================" << std::endl;
-	std::cout << "====================================================" << std::endl;
+	std::cout << "==========================================================" << std::endl;
+	std::cout << "========================Xin Chào==========================" << std::endl;
+	std::cout << "==========================================================" << std::endl;
 
 	
 	while(1){
-		std::cout << "\n=======  Hãy chọn khách hàng mua chậu  =========\n";
+		flag = true;
+		std::cout << CHOICE_CUSTOMER;
 		showListCustomer();
 		std::cin >> Customer;
 		if(Customer == 3){
@@ -30,8 +55,8 @@ int main(int argc, char const *argv[])
 			std::string custName = getCustomer(Customer);
 			std::cout << "============ Khách hàng mua chậu là: " << custName << " =============\n";
 
-			while(1){
-				std::cout << "\n================= Chọn loại chậu ==========================\n";
+			while(flag){
+				std::cout << CHOICE_PRODUCT;
 				showListProduct();
 				std::cin >> typeOfProduct;
 				if(typeOfProduct == 4) {
@@ -43,34 +68,35 @@ int main(int argc, char const *argv[])
 				else{
 					std::string typeProduct;
 					typeProduct = getTypeOfProduct(typeOfProduct);
-					std::cout << "================ Bạn đã chọn " << typeProduct << " ==============\n";
+					std::cout << "=================== Bạn đã chọn " << typeProduct << " ================\n";
+					
+					while(flag){
+						std::cout << CHOICE_PRODUCT_NAME;
+						showListChauTron();
+						std::cin >> nameOfProduct;
+						if(nameOfProduct == 7){
+							std::cout << EXIT;
+							break;
+						}else if(nameOfProduct <= 0 || nameOfProduct > 7){
+							std::cout << CHOICE_AGAIN;
+						}else{
+							std::string name;
+							name = getProductName(nameOfProduct);
+							std::cout << "=================== Bạn đã chọn " << name << " ================\n";
+							
+							Bill bill(custName, name, 0, 0);
+							bill.makeBill();
+							std::cout << MAKE_BILL_SUCCESS << std::endl;
+							flag = false;
+							break;
+						}
+					}
 
 				}
 			
 			}
 		}
 	}
-
-
 	
 	return 0;
-}
-
-void showListProduct(){
-	std::vector<std::string> listProductVector;
-	listProductVector.push_back(CHAU_TRON);
-	listProductVector.push_back(CHAU_LUC_LANG);
-	listProductVector.push_back(CHAU_VUONG);
-
-	for(int i = 0; i < listProductVector.size();i++){
-		std::cout <<"\t" << i+1 << " - ";
-		std::cout << listProductVector[i] << std::endl;
-	}
-	std::cout << "\t" << "4 - " << "Thoát" << endl;
-}
-
-void showListCustomer(){
-	std::cout << "\t1 - " << CUST_TUEANH << std::endl;
-	std::cout << "\t2 - " << CUST_OTHER << std::endl;
-	std::cout << "\t3 - " << "Thoát" << endl;
 }
