@@ -27,12 +27,14 @@ class Bill {
 	}
 };
 
+
 int main(int argc, char const *argv[])
 {
 	bool flag;
 	short typeOfProduct;
 	short Customer;
 	short nameOfProduct;
+	short quantity;
 	
 
 	std::cout << "==========================================================" << std::endl;
@@ -72,7 +74,7 @@ int main(int argc, char const *argv[])
 					
 					while(flag){
 						std::cout << CHOICE_PRODUCT_NAME;
-						showListChauTron();
+						showListChau(typeProduct);
 						std::cin >> nameOfProduct;
 						if(nameOfProduct == 7){
 							std::cout << EXIT;
@@ -81,11 +83,21 @@ int main(int argc, char const *argv[])
 							std::cout << CHOICE_AGAIN;
 						}else{
 							std::string name;
-							name = getProductName(nameOfProduct);
+							name = getProductName(typeProduct, nameOfProduct);
 							std::cout << "=================== Bạn đã chọn " << name << " ================\n";
-							
-							Bill bill(custName, name, 0, 0);
+							std::cout << ENTER_QUANTITY;
+							std::cin >> quantity;
+							int total = caculation(typeProduct, name, quantity);
+			
+							Bill bill(custName, name, quantity, total);
 							bill.makeBill();
+
+							//Clear Bill
+							Customer = 0;
+							typeOfProduct = 0;
+							nameOfProduct = 0;
+							quantity = 0;
+
 							std::cout << MAKE_BILL_SUCCESS << std::endl;
 							flag = false;
 							break;
@@ -100,3 +112,4 @@ int main(int argc, char const *argv[])
 	
 	return 0;
 }
+

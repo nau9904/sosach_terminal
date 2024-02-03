@@ -4,35 +4,32 @@
 
 
 enum PRICE_CHAU_TRON{
-    TRON_50 = 0,
-    TRON_60 = 0,
-    TRON_70 = 0,
-    TRON_80 = 0,
-    TRON_90 = 0,
-    TRON_100 = 0,
-    TRON_110 = 0,
-    TRON_120 = 0,
-    TRON_130 = 0,
+    TRON_50 = 50,
+    TRON_60 = 60,
+    TRON_70 = 70,
+    TRON_80 = 80,
+    TRON_90 = 90,
+    TRON_100 = 100,
 };
 
 enum PRICE_CHAU_LUC_LANG{
-    LUC_LANG_50 = 0,
-    LUC_LANG_60 = 0,
-    LUC_LANG_70 = 0,
-    LUC_LANG_80 = 0,
-    LUC_LANG_90 = 0,
-    LUC_LANG_100 = 0,
+    LUC_LANG_50 = 1,
+    LUC_LANG_60 = 1,
+    LUC_LANG_70 = 1,
+    LUC_LANG_80 = 1,
+    LUC_LANG_90 = 1,
+    LUC_LANG_100 = 1,
 };
 
 enum PRICE_CHAU_VUONG{
-    VUONG_50 = 0,
-    VUONG_60 = 0,
-    VUONG_70 = 0,
-    VUONG_80 = 0,
-    VUONG_90 = 0,
-    VUONG_100 = 0,
-    VUONG_110 = 0,
-    VUONG_120 = 0,
+    VUONG_50 = 1,
+    VUONG_60 = 1,
+    VUONG_70 = 1,
+    VUONG_80 = 1,
+    VUONG_90 = 1,
+    VUONG_100 = 1,
+    VUONG_110 = 1,
+    VUONG_120 = 1,
 };
 
 
